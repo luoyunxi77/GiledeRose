@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tdd.GiledeRoseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-13T13:22:05" hostname="zhangqiandembp" time="0.003">
+  <properties/>
+  <testcase name="given_one_store_and_some_general_goods_of_in_sell_and_quality_between_0_and_50_when_updateOneDay_then_sellIn_and_quality_decrease_by_1" classname="com.tdd.GiledeRoseTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
