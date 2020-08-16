@@ -13,12 +13,7 @@ public class GiledeRose {
 
     public void updateOneDay() {
         for (Goods it : goods) {
-            if (it.getQuality() == 0) {
-                it.setQuality(0);
-            } else {
-                it.setQuality(it.getQuality() - 1);
-            }
-            it.setSellIn(it.getSellIn() - 1);
+            it.passOneDay();
         }
     }
 }

@@ -11,14 +11,6 @@ public class Goods {
         this.quality = quality;
     }
 
-    public void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
-    }
-
-    public void setQuality(int quality) {
-        this.quality = quality;
-    }
-
     public int getSellIn() {
         return sellIn;
     }
@@ -27,5 +19,22 @@ public class Goods {
         return quality;
     }
 
+    public void passOneDay() {
+        updateSellIn();
+        updateQuality();
+    }
 
+    private void updateSellIn() {
+        sellIn = sellIn - 1;
+    }
+
+    private void updateQuality() {
+        if (quality == 0) {
+            quality = 0;
+        } else if (quality < 0) {
+            throw new IllegalArgumentException("quality can not be less than 0");
+        } else {
+            quality = quality - 1;
+        }
+    }
 }
