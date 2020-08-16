@@ -31,6 +31,12 @@ public class Goods {
         }
     }
 
+    public void increaseQuality() {
+        if (quality < 50) {
+            quality = quality + 1;
+        }
+    }
+
     private boolean isExpired() {
         return sellIn < 0;
     }

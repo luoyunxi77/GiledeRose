@@ -101,4 +101,20 @@ public class GiledeRoseTest {
         assertThat(giledeRose.getGoods()[1].sellIn, is(19));
         assertThat(giledeRose.getGoods()[1].quality, is(50));
     }
+
+    @Test
+    public void given_one_store_and_some_BackstagePass_goods_of_sellIn_is_between_5_and_10_and_quality_between_0_and_50_when_updateOneDay_then_sellIn_decrease_by_1_and_quality_increase_by_2_but_not_greater_than_50() {
+        Goods good1 = new BackstagePass(10, 25);
+        Goods good2 = new BackstagePass(6, 50);
+        Goods[] generalGoods = new Goods[]{good1, good2};
+
+        GiledeRose giledeRose = new GiledeRose(generalGoods);
+        giledeRose.updateOneDay();
+
+        assertThat(giledeRose.getGoods()[0].sellIn, is(9));
+        assertThat(giledeRose.getGoods()[0].quality, is(27));
+
+        assertThat(giledeRose.getGoods()[1].sellIn, is(5));
+        assertThat(giledeRose.getGoods()[1].quality, is(50));
+    }
 }
