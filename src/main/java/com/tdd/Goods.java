@@ -22,6 +22,9 @@ public class Goods {
     public void passOneDay() {
         updateSellIn();
         updateQuality();
+        if (isExpired()) {
+            updateQuality();
+        }
     }
 
     private void updateSellIn() {
@@ -38,5 +41,9 @@ public class Goods {
         } else {
             quality = quality - 1;
         }
+    }
+
+    private boolean isExpired() {
+        return sellIn < 0;
     }
 }
