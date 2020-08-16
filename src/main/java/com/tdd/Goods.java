@@ -2,26 +2,19 @@ package com.tdd;
 
 public class Goods {
 
-    private int sellIn;
+    public int sellIn;
 
-    private int quality;
+    public int quality;
 
     public Goods(int sellIn, int quality) {
         this.sellIn = sellIn;
         this.quality = quality;
     }
 
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    public int getQuality() {
-        return quality;
-    }
-
-    public void passOneDay() {
-        updateSellIn();
+    public void updateOneDay() {
         updateQuality();
+        updateSellIn();
+
         if (isExpired()) {
             updateQuality();
         }
@@ -31,19 +24,23 @@ public class Goods {
         sellIn = sellIn - 1;
     }
 
-    private void updateQuality() {
-        if (quality == 0) {
-            quality = 0;
-        } else if (quality < 0) {
-            throw new IllegalArgumentException("quality can not be less than 0");
-        } else if (quality > 50) {
-            throw new IllegalArgumentException("quality can not be greater than 50");
-        } else {
+    public void updateQuality() {
+        isQualityValid();
+        if (quality > 0) {
             quality = quality - 1;
         }
     }
 
     private boolean isExpired() {
         return sellIn < 0;
+    }
+
+    public void isQualityValid() {
+        if (quality < 0) {
+            throw new IllegalArgumentException("quality can not be less than 0");
+        }
+        if (quality > 50) {
+            throw new IllegalArgumentException("quality can not be greater than 50");
+        }
     }
 }

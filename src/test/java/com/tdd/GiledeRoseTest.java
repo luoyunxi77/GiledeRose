@@ -21,11 +21,11 @@ public class GiledeRoseTest {
         GiledeRose giledeRose = new GiledeRose(generalGoods);
         giledeRose.updateOneDay();
 
-        assertThat(giledeRose.getGoods()[0].getSellIn(), is(2));
-        assertThat(giledeRose.getGoods()[0].getQuality(), is(24));
+        assertThat(giledeRose.getGoods()[0].sellIn, is(2));
+        assertThat(giledeRose.getGoods()[0].quality, is(24));
 
-        assertThat(giledeRose.getGoods()[1].getSellIn(), is(4));
-        assertThat(giledeRose.getGoods()[1].getQuality(), is(49));
+        assertThat(giledeRose.getGoods()[1].sellIn, is(4));
+        assertThat(giledeRose.getGoods()[1].quality, is(49));
     }
 
     @Test
@@ -37,11 +37,11 @@ public class GiledeRoseTest {
         GiledeRose giledeRose = new GiledeRose(generalGoods);
         giledeRose.updateOneDay();
 
-        assertThat(giledeRose.getGoods()[0].getSellIn(), is(2));
-        assertThat(giledeRose.getGoods()[0].getQuality(), is(0));
+        assertThat(giledeRose.getGoods()[0].sellIn, is(2));
+        assertThat(giledeRose.getGoods()[0].quality, is(0));
 
-        assertThat(giledeRose.getGoods()[1].getSellIn(), is(4));
-        assertThat(giledeRose.getGoods()[1].getQuality(), is(0));
+        assertThat(giledeRose.getGoods()[1].sellIn, is(4));
+        assertThat(giledeRose.getGoods()[1].quality, is(0));
     }
 
     @Test
@@ -79,10 +79,26 @@ public class GiledeRoseTest {
         GiledeRose giledeRose = new GiledeRose(generalGoods);
         giledeRose.updateOneDay();
 
-        assertThat(giledeRose.getGoods()[0].getSellIn(), is(-2));
-        assertThat(giledeRose.getGoods()[0].getQuality(), is(23));
+        assertThat(giledeRose.getGoods()[0].sellIn, is(-2));
+        assertThat(giledeRose.getGoods()[0].quality, is(23));
 
-        assertThat(giledeRose.getGoods()[1].getSellIn(), is(-6));
-        assertThat(giledeRose.getGoods()[1].getQuality(), is(48));
+        assertThat(giledeRose.getGoods()[1].sellIn, is(-6));
+        assertThat(giledeRose.getGoods()[1].quality, is(48));
+    }
+
+    @Test
+    public void given_one_store_and_some_BackstagePass_goods_of_sellIn_is_greater_than_10_and_quality_between_0_and_50_when_updateOneDay_then_sellIn_decrease_by_1_and_quality_increase_by_1_but_not_greater_than_50() {
+        Goods good1 = new BackstagePass(11, 25);
+        Goods good2 = new BackstagePass(20, 50);
+        Goods[] generalGoods = new Goods[]{good1, good2};
+
+        GiledeRose giledeRose = new GiledeRose(generalGoods);
+        giledeRose.updateOneDay();
+
+        assertThat(giledeRose.getGoods()[0].sellIn, is(10));  // updateQuality must before as updateSellIn
+        assertThat(giledeRose.getGoods()[0].quality, is(26));
+
+        assertThat(giledeRose.getGoods()[1].sellIn, is(19));
+        assertThat(giledeRose.getGoods()[1].quality, is(50));
     }
 }

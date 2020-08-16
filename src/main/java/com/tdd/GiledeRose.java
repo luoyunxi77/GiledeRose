@@ -13,7 +13,7 @@ public class GiledeRose {
 
     public void updateOneDay() {
         for (Goods it : goods) {
-            it.passOneDay();
+            it.updateOneDay();
         }
     }
 }
