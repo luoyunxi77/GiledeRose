@@ -33,6 +33,8 @@ public class Goods {
             quality = 0;
         } else if (quality < 0) {
             throw new IllegalArgumentException("quality can not be less than 0");
+        } else if (quality > 50) {
+            throw new IllegalArgumentException("quality can not be greater than 50");
         } else {
             quality = quality - 1;
         }

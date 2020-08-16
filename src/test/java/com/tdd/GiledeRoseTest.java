@@ -56,4 +56,17 @@ public class GiledeRoseTest {
         exception.expectMessage("quality can not be less than 0");
         giledeRose.updateOneDay();
     }
+
+    @Test
+    public void given_one_store_and_some_general_goods_of_in_sell_and_quality_is_greater_than_50_and_when_updateOneDay_then_throw_exception_with_message() {
+        Goods good1 = new Goods(3, 100);
+        Goods good2 = new Goods(5, 51);
+        Goods[] generalGoods = new Goods[]{good1, good2};
+
+        GiledeRose giledeRose = new GiledeRose(generalGoods);
+
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("quality can not be greater than 50");
+        giledeRose.updateOneDay();
+    }
 }
