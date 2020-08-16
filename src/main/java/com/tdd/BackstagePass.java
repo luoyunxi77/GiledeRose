@@ -10,7 +10,11 @@ public class BackstagePass extends Goods {
         isQualityValid();
         increaseQuality();
 
-        if (sellIn < 11 && sellIn > 5) {
+        if (sellIn < 11) {
+            increaseQuality();
+        }
+
+        if (sellIn < 6) {
             increaseQuality();
         }
     }
