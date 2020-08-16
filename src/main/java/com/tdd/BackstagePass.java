@@ -18,4 +18,9 @@ public class BackstagePass extends Goods {
             increaseQuality();
         }
     }
+
+    @Override
+    public void updateQualityWhenExpired() {
+        quality = 0;
+    }
 }

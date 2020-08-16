@@ -16,7 +16,7 @@ public class Goods {
         updateSellIn();
 
         if (isExpired()) {
-            updateQuality();
+            updateQualityWhenExpired();
         }
     }
 
@@ -29,6 +29,10 @@ public class Goods {
         if (quality > 0) {
             quality = quality - 1;
         }
+    }
+
+    public void updateQualityWhenExpired() {
+        updateQuality();
     }
 
     public void increaseQuality() {
